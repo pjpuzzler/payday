@@ -70,7 +70,8 @@ while True:
 
     stdscr.addstr(
         0, 0, f'Gross Earnings: ${money_earned:,.2f} (${HOURLY_WAGE / 3600:,.4f}/s)')
-    stdscr.addstr(1, 0, f'Taxes Paid:    -${taxes_paid:,.2f}')
+    stdscr.addstr(
+        1, 0, f'Taxes Paid:    -${taxes_paid:,.2f} ({TAX_PERCENTAGE:.2%})')
     stdscr.addstr(
         1, 40, f'Time Worked: {precisedelta(time_worked, format="%.0f")}')
     stdscr.addstr(

@@ -49,8 +49,10 @@ while True:
     time_worked = time_worked_prev + time_worked_today
 
     next_payday = FIRST_PAYDAY
+    payday_num = 1
     while next_payday < now:
         next_payday += PAY_INTERVAL
+        payday_num += 1
 
     time_until_payday = next_payday - now
 
@@ -77,7 +79,7 @@ while True:
     stdscr.addstr(
         4, 0, f'Payday Earnings: ${money_earned_payday:,.2f}/${TOTAL_PAYDAY_EARNINGS:,.2f}')
     stdscr.addstr(
-        4, 40, f'Time Until Payday: {naturaldelta(time_until_payday)}')
+        4, 40, f'Time Until Payday ({payday_num}): {naturaldelta(time_until_payday)}')
 
     stdscr.addstr(
         6, 0, f'Earnings Today: ${money_earned_today:,.2f}/${TOTAL_DAILY_EARNINGS:,.2f}')

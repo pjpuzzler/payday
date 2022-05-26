@@ -5,13 +5,13 @@ from time import sleep
 from humanize.time import naturaldelta, precisedelta
 
 START_DATE = datetime(2022, 5, 23, 9)  # May 23, 2022 9:00 AM
-HOURLY_WAGE = 16.00
+HOURLY_WAGE = 16.00  # $16/hr
 START_TIME = time(9)  # 9:00 AM
 END_TIME = time(17)  # 5:00 PM
 DAILY_HOURS_WORKED = 7
 BREAK_TIME = time(12)  # 12:00 PM
 BREAK_DURATION = timedelta(hours=1)
-TAX_PERCENTAGE = 0.2233
+TAX_PERCENTAGE = 0.2233  # 22.33%
 TIME_OFF = timedelta(hours=0)
 PAY_INTERVAL = timedelta(weeks=2)  # Biweekly
 PAY_INTERVAL_DAYS = 10

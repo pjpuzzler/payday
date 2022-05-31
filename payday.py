@@ -1,5 +1,6 @@
 import curses
-from datetime import datetime, time, timedelta
+from datetime import date, datetime, time, timedelta
+from numpy import busday_count
 from time import sleep
 
 from humanize.time import naturaldelta, precisedelta
@@ -12,6 +13,7 @@ DAILY_HOURS_WORKED = 7
 BREAK_TIME = time(12)  # 12:00 PM
 BREAK_DURATION = timedelta(hours=1)
 TAX_PERCENTAGE = 0.2233  # 22.33%
+HOLIDAYS = [date(2022, 5, 30)]
 TIME_OFF = timedelta(hours=0)
 PAY_INTERVAL = timedelta(weeks=2)  # Biweekly
 PAY_INTERVAL_DAYS = 10
@@ -31,8 +33,8 @@ while True:
     break_start = datetime.combine(now.date(), BREAK_TIME)
     day_end = datetime.combine(now.date(), END_TIME)
 
-    time_worked_prev = timedelta(
-        hours=(now - START_DATE).days * DAILY_HOURS_WORKED) - TIME_OFF
+    time_worked_prev = timedelta(hours=int(busday_count(
+        START_DATE.date(), now.date(), holidays=HOLIDAYS) * DAILY_HOURS_WORKED)) - TIME_OFF
 
     # completed a full day today
     if now >= day_end:
@@ -62,8 +64,8 @@ while True:
         (1 - TAX_PERCENTAGE)
 
     prev_payday = next_payday - PAY_INTERVAL
-    time_worked_before_payday = (timedelta(hours=(prev_payday - START_DATE).days *
-                                 DAILY_HOURS_WORKED) - TIME_OFF) if prev_payday > START_DATE else timedelta()
+    time_worked_before_payday = (timedelta(hours=int(busday_count(START_DATE.date(), (prev_payday + timedelta(
+        days=1)).date(), holidays=HOLIDAYS) * DAILY_HOURS_WORKED)) - TIME_OFF) if prev_payday > START_DATE else timedelta()
     time_worked_payday = time_worked - time_worked_before_payday
     money_earned_payday = time_worked_payday.total_seconds() * HOURLY_WAGE / \
         3600 * (1 - TAX_PERCENTAGE)

@@ -16,7 +16,7 @@ BREAK_DURATION = timedelta(hours=1)
 TAX_PERCENTAGE = 0.2233  # 22.33%
 WEEKMASK = [1, 1, 1, 1, 1, 0, 0]  # Mon-Fri
 HOLIDAYS = [date(2022, 5, 30)]
-TIME_OFF = timedelta(hours=0)
+TIME_OFF = timedelta(hours=0.5)
 PAY_INTERVAL = timedelta(weeks=2)  # Biweekly
 PAY_INTERVAL_DAYS = 10
 FIRST_PAYDAY = datetime(2022, 6, 3, 17)  # June 3, 2022 5:00 PM

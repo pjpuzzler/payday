@@ -13,7 +13,7 @@ END_TIME = time(17)  # 5:00 PM
 DAILY_HOURS_WORKED = 7
 BREAK_TIME = time(12)  # 12:00 PM
 BREAK_DURATION = timedelta(hours=1)
-TAX_PERCENTAGE = 0.2233  # 22.33%
+TAX_PERCENTAGE = 0.1369  # 13.69%
 WEEKMASK = [1, 1, 1, 1, 1, 0, 0]  # Mon-Fri
 HOLIDAYS = [date(2022, 5, 30)]
 TIME_OFF = timedelta(hours=0.5)
